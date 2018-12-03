@@ -1,5 +1,7 @@
 # Version: 1.1.0
 
+import math
+
 def IsNumber(num):
     try:
         float(num)
@@ -30,8 +32,20 @@ def IsIPv4Address(ipAdd):
 
     return True
 
+def IsIPv4Mask(ipMask):
+    """Validate an IPv4 subnet mask"""
 
-# if IsIPv4Address(input("Gimme you address! ")):
-#     print ("TRUEЪ")
-# else:
-#     print ("NOT TRUEЪ")
+    # Each mask looks like an IPv4 address and must pass the checks
+    if not IsIPv4Address(ipMask):
+        return False
+
+    for octet in octets:
+        try:
+            octlog2 = math.log2(octet)
+        except ValueError:
+            return False
+
+        if octlog2 != int(octlog2):
+            return False
+
+    return True

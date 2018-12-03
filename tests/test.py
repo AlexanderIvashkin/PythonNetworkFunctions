@@ -20,5 +20,8 @@ class UnitTestsCase(unittest.TestCase):
         self.assertFalse(network_fun.IsIPv4Address("1.1.-1.23"))
         self.assertFalse(network_fun.IsIPv4Address("1.1.a1.23"))
 
+    def test_InValidIPv4Mask(self):
+        self.assertFalse(network_fun.IsIPv4Mask("1.1.1"))
+
 if __name__ == '__main__':
     unittest.main()
