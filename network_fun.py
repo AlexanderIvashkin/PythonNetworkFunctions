@@ -31,7 +31,7 @@ def IsIPv4Address(ipAdd):
     return True
 
 
-if IsIPv4Address(input("Gimme you address! ")):
-    print ("TRUEЪ")
-else:
-    print ("NOT TRUEЪ")
+# if IsIPv4Address(input("Gimme you address! ")):
+#     print ("TRUEЪ")
+# else:
+#     print ("NOT TRUEЪ")
