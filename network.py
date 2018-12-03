@@ -1,3 +1,5 @@
+# Version: 1.0.0
+
 def IsNumber(num):
     try:
         float(num)
