@@ -1,7 +1,5 @@
 # Version: 1.1.0
 
-import math
-
 def IsNumber(num):
     try:
         float(num)
@@ -35,6 +33,7 @@ def IsIPv4Address(ipAdd):
 def IsMaskOctet(octet):
     if not IsInteger(octet):
         return False
+    octet = int(octet)
     isBitZero = bin(octet)[2] == "0"
     for bit in bin(octet)[3:]:
         if bit == "1" and isBitZero:
