@@ -40,7 +40,7 @@ def IsIPv4Mask(ipMask):
     ipMaskBinary = ipMaskBinary.join([bin(int(oct))[2:] for oct in ipMask.split(".")])
 
     isBitZero = ipMask[0] == "0"
-    for bit in ipMask[1:]:
+    for bit in ipMaskBinary[1:]:
         if bit == "1" and isBitZero:
                 return False
 
