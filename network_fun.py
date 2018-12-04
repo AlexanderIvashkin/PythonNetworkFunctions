@@ -29,8 +29,22 @@ def IsIPv4Address(ipAdd):
 
     return True
 
+def IsIPv4Mask(ipMask):
+    """Validate an IPv4 subnet mask"""
 
-# if IsIPv4Address(input("Gimme you address! ")):
-#     print ("TRUEЪ")
-# else:
-#     print ("NOT TRUEЪ")
+    # Each mask looks like an IPv4 address and must pass the checks
+    if not IsIPv4Address(ipMask):
+        return False
+
+    ipMaskBinary = ""
+    ipMaskBinary = ipMaskBinary.join([bin(int(oct))[2:] for oct in ipMask.split(".")])
+
+    isBitZero = ipMask[0] == "0"
+    for bit in ipMaskBinary[1:]:
+        if bit == "1" and isBitZero:
+                return False
+
+        if bit == "0":
+            isBitZero = True
+
+    return True
