@@ -17,7 +17,6 @@ def IsInteger(num):
             return False
     except ValueError:
         return False
-    return True
 
 def IsIPv4Address(ipAdd):
     """Validate an IPv4 address"""
