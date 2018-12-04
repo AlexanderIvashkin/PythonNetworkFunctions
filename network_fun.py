@@ -29,18 +29,6 @@ def IsIPv4Address(ipAdd):
 
     return True
 
-# TODO unit tests for this func (all the possible values)
-def IsMaskOctet(octet):
-    if not IsInteger(octet):
-        return False
-    octet = int(octet)
-    isBitZero = bin(octet)[2] == "0"
-    for bit in bin(octet)[3:]:
-        if bit == "1" and isBitZero:
-            return False
-
-    return True
-
 def IsIPv4Mask(ipMask):
     """Validate an IPv4 subnet mask"""
 
@@ -48,8 +36,15 @@ def IsIPv4Mask(ipMask):
     if not IsIPv4Address(ipMask):
         return False
 
-    for octet in octets:
-        if not IsMaskOctet(octet):
-            return False
+    ipMaskBinary = ""
+    ipMaskBinary = ipMaskBinary.join([bin(int(oct))[2:] for oct in ipMask.split(".")])
+
+    isBitZero = ipMask[0] == "0"
+    for bit in ipMask[1:]:
+        if bit == "1" and isBitZero:
+                return False
+
+        if bit == "0":
+            isBitZero = True
 
     return True
